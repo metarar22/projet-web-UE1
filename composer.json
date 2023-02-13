@@ -1,0 +1,17 @@
+{
+    "name": "metarar22/projet-eco-frume-final",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "metarar22",
+            "email": "victoireboris@gmail.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^5.2"
+    }
+}
