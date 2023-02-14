@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +12,9 @@
 </head>
 <body>
     <body>
+        <?php if(isset($_SESSION['userEmail'])){
+            echo "Connexion Réussie";
+        } ?>
         <header>
             <div class="logo"> <span>Eco</span>Frume</div>
             <ul class="menu">
@@ -21,17 +26,17 @@
             </ul>
         </header>
 
-        <form>
+        <form method="POST" action="">
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <label for="exampleInputEmail1" class="form-label" name="userEmail">Email address</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
              </div>
             <div class="mb-3">
-                 <label for="exampleInputPassword1" class="form-label">Password</label>
+                 <label for="exampleInputPassword1" class="form-label" name="userPassword">Password</label>
                 <input type="password" class="form-control" id="exampleInputPassword1">
             </div>
-            <button type="button" class="btn btn-success">Se Connecter</button>
+            <button type="button" class="btn btn-success" name="submit" id="conn">Se Connecter</button>
         </form>   
 
 
@@ -40,6 +45,11 @@
         
         <div class="end"></div>
 
-        <script src="./js/app.js" type="module"></script>
 </body>
 </html>
+
+
+
+
+
+    

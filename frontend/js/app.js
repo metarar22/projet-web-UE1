@@ -9,6 +9,7 @@ var url="http://localhost:8000/Product.php";
 var product=document.getElementById("product")
 var form=document.getElementById("myForm") 
 
+
 function fData(data){
     var p=data
     var v
