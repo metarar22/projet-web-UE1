@@ -44,35 +44,14 @@ $statement2->execute();
 //Creation de la table Panier
 $Query3 = 'CREATE TABLE IF NOT EXISTS Cart(
     cartId INT AUTO_INCREMENT PRIMARY KEY,
-    clientId INT NOT NULL,
     productId INT NOT NULL,
-    amount INT NOT NULL,
-    statut Text NOT NULL,
-    FOREIGN KEY (clientId)
-        REFERENCES User(userId),
-    FOREIGN KEY (productId)
-        REFERENCES Product(productId)   
+    productName varchar(50) NOT NULL,
+    productPrice INT NOT NULL
     )';
 
 $statement3 = $connection->prepare($Query3);
 $statement3->execute();
 
-//Creation de la table Commande
-$Query4 = 'CREATE TABLE IF NOT EXISTS OrderSum(
-    orderId INT AUTO_INCREMENT PRIMARY KEY,
-    cartId INT NOT NULL,
-    clientId INT NOT NULL,
-    amount INT NOT NULL,
-    dateAchat Text NOT NULL,
-    statut Text NOT NULL,
-    FOREIGN KEY (clientId)
-        REFERENCES User(userId),
-    FOREIGN KEY (cartId)
-        REFERENCES Cart(cartId)
-    )';
-
-$statement4 = $connection->prepare($Query4);
-$statement4->execute();
 
 
 

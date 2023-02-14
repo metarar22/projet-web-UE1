@@ -18,7 +18,7 @@ switch($request_method)
   case 'GET':
     if(!empty($_GET["cartId"]))
     {
-      // Récupérer une seule facture par l'ID
+
       $id = ($_GET["cartId"]);
       getCartByCartId($id);
     }
@@ -32,12 +32,12 @@ switch($request_method)
     break;
 
     case 'DELETE';
-    //Supprimer une facture
+
       deleteCart();
       break;
 
   default:
-    // Requête invalide
+
     header("Method Not Allowed");
     break;
   

@@ -1,5 +1,5 @@
 <?php
-include ('./backend/src/Controller/UserController.php');
+use App\Entity\Client;
 
 //Se connecter à la base de données
 try{
@@ -18,26 +18,30 @@ switch($request_method)
   case 'GET':
     if(!empty($_GET["userId"]))
     {
-      // Récupérer une seule facture par l'ID
+
       $id = ($_GET["userId"]);
       getUserById($id);
     }
-    elseif(!empty($_GET["userName"]))
+    elseif(!empty($_GET["userEmail"]))
     {
-        $name = ($_GET["userName"]);
-        getUserByName($name);
+        $email = ($_GET["userEmail"]);
+        getUserByEmail($email);
     } else {
         listAllUser();
     }
     break;
 
   case 'POST':
-    //Ajouter une Facture
+
+    if(isset($_POST['submit'])){
+      userConnect();
+    }else{
     addUser();
+    }
     break;
   
   case 'DELETE';
-  //Supprimer une facture
+
     deleteUser();
     break;
 
@@ -65,9 +69,9 @@ function listAllUser(){
     echo json_encode($result);
   }
 
-  function getUserByName($name){
+  function getUserByEmail($email){
     global $connection;
-    $sql = "SELECT * FROM User WHERE userName = $name";
+    $sql = "SELECT * FROM User WHERE userEmail = $email";
     $stmt = $connection->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -111,4 +115,24 @@ function listAllUser(){
       echo 'User deleted';
     }
     
+  }
+
+  function userConnect(){
+    global $connection;
+    session_start();
+    $email = $_POST['userEmail'];
+    $password = $_POST['userPassword'];
+    $sql = "SELECT FROM User WHERE userEmail = $email";
+    $stmt = $connection->prepare($sql);
+    $stmt->execute();
+
+    if($stmt->rowCount() > 0){
+      $data = $stmt->fetchAll();
+      if(password_verify($password, $data[0]['userPassword'])){
+        echo "Connexion réussie";
+        $_SESSION['userEmail'] = $email;
+      }else{
+        echo "Veuillez vous inscrire";
+      }
+    }
   }
