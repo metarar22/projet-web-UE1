@@ -1,9 +1,13 @@
 import { mainprod } from "./module.js"
 
+
 customElements.define('product-code',mainprod)
 
-var url="http://localhost:8000/api/Product.php";
+var url="http://localhost:8000/Product.php";
+
+
 var product=document.getElementById("product")
+var form=document.getElementById("myForm") 
 
 function fData(data){
     var p=data
@@ -31,6 +35,26 @@ function fLoadOverHTTPV2() {
     .then(fOk)
 }
 
+
 window.addEventListener("load", (event) => {
     fLoadOverHTTPV2();
   });
+
+
+
+
+  
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const payload = new FormData(form);
+
+    fetch('http://localhost:8000/User.php', {
+        method: "POST",
+        body: payload,
+    })
+    .then(res => res.json)
+})
+
+
+

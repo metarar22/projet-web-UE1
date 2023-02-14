@@ -21,22 +21,25 @@
             </ul>
         </header>
 
-
-
-        <div class="box-container">
-            <div class="row">
-                <div class="col-12">
-                    <h1 id="Title">Nos Produits</h1>
-                </div>
+        <form>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+             </div>
+            <div class="mb-3">
+                 <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
             </div>
-        </div>
+            <button type="button" class="btn btn-success">Se Connecter</button>
+        </form>   
 
-        <div class="row" id="product"></div>
+
 
 
         
-        <div class="end">
-        </div>
+        <div class="end"></div>
+
         <script src="./js/app.js" type="module"></script>
 </body>
 </html>
