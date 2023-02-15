@@ -47,7 +47,7 @@ public function EmptyCart(){
     return "Product added to cart" . PHP_EOL;
 }
 
-public function Chekout(int $cartId){
+public function Chekout(){
     $Query = "SELECT SUM(productPrice) FROM Cart";
     $statement = $this->connection->prepare($Query);
     $statement->execute();

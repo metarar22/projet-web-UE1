@@ -21,11 +21,7 @@ switch($request_method)
 
       $id = ($_GET["cartId"]);
       getCartByCartId($id);
-    }
-    elseif(!empty($_GET["clientId"]))
-    {
-        $name = ($_GET["clientId"]);
-        getCartByClientId($CId);
+
     } else {
         listAllCart();
     }
@@ -60,14 +56,6 @@ function listAllCart(){
     echo json_encode($result);
   }
 
-  function getCartByClientId($CId){
-    global $connection;
-    $sql = "SELECT * FROM Cart WHERE cartId = $CId";
-    $stmt = $connection->prepare($sql);
-    $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode($result);
-  }
 
   function deleteCart(){
     global $connection;
