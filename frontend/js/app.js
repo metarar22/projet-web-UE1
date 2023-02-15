@@ -21,11 +21,6 @@ function fData(data){
         }
     }
     
-    
-
-
-
-
 
 function fOk(response){
     response.json()
@@ -37,11 +32,11 @@ function fLoadOverHTTPV2() {
 }
 
 
+
+
 window.addEventListener("load", (event) => {
     fLoadOverHTTPV2();
   });
-
-
 
 
   
@@ -56,6 +51,13 @@ form.addEventListener('submit', function(e) {
     })
     .then(res => res.json)
 })
+
+
+
+
+
+
+
 
 
 

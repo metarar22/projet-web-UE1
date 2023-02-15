@@ -16,14 +16,8 @@ header("Content-Type: application/json; charset=utf-8");
 switch($request_method)
 {
   case 'GET':
-    if(!empty($_GET["cartId"]))
     {
-
-      $id = ($_GET["cartId"]);
-      getCartByCartId($id);
-
-    } else {
-        listAllCart();
+      listCart();
     }
     break;
 
@@ -38,7 +32,7 @@ switch($request_method)
     break;
   
 }
-function listAllCart(){
+function listCart(){
     global $connection;
     $sql = "SELECT * FROM Cart";
     $stmt = $connection->prepare($sql);

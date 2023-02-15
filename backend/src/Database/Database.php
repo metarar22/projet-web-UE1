@@ -44,9 +44,10 @@ $statement2->execute();
 //Creation de la table Panier
 $Query3 = 'CREATE TABLE IF NOT EXISTS Cart(
     cartId INT AUTO_INCREMENT PRIMARY KEY,
-    productId INT NOT NULL,
     productName varchar(50) NOT NULL,
-    productPrice INT NOT NULL
+    productPrice INT NOT NULL,
+    productCategory varchar(50),
+    productPicture Text NOT NULL
     )';
 
 $statement3 = $connection->prepare($Query3);
@@ -57,6 +58,7 @@ $statement3->execute();
 
 //Insertion des données dans la table Produit (Liste des fruits et légumes commercialisés)
 $Query5 = 'INSERT INTO Product(productName, productCategory, productPrice, productStock, productPicture) VALUES(:productName, :productCategory, :productPrice, :productStock, :productPicture)';
+
 
 $Fruits = [
     [
@@ -201,7 +203,7 @@ $Legumes = [
         'productPrice' => '4',
         'productStock' => '200',
         'productPicture' => 'https://static3.depositphotos.com/1001348/132/i/450/depositphotos_1328145-stock-photo-ripe-broccoli-cabbage-isolated-on.jpg'
-    ],
+    ]
 ];
 
 
@@ -218,3 +220,67 @@ foreach($Legumes as $Legume) {
     $statement6->execute($Legume);
 }
 */
+
+
+$Query6 = 'INSERT INTO Cart(productName, productPrice, productCategory, productPicture) VALUES(:productName, :productPrice, :productCategory, :productPicture)';
+
+$Cart = [
+    [
+        'productName' => 'Citron',
+        'productPrice' => '3',        
+        'productCategory' => 'Fruit',
+        'productPicture' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Lemon.jpg/800px-Lemon.jpg?20050214195124'
+    ],
+    [
+        'productName' => 'Orange',
+        'productPrice' => '4',        
+        'productCategory' => 'Fruit',
+        'productPicture' => 'https://images.pexels.com/photos/161559/background-bitter-breakfast-bright-161559.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    ],
+    [
+        'productName' => 'Fraise',
+        'productPrice' => '2',        
+        'productCategory' => 'Fruit',
+        'productPicture' => 'https://www.aprifel.com/wp-content/uploads/2019/02/fraise.jpg'
+    ],
+    [
+        'productName' => 'Framboise',
+        'productPrice' => '2',        
+        'productCategory' => 'Fruit',
+        'productPicture' => 'https://tous-les-fruits.com/wp-content/uploads/2018/02/framboise.jpg'
+    ]
+    ];
+
+    
+$statement6 = $connection->prepare($Query6);
+foreach($Cart as $car) {
+    $statement6->execute($car);
+}
+
+
+$Query7 = 'INSERT INTO User(userEmail, userPassword, userFname, userLname, userAdress, userRole) VALUES(:userEmail, :userPassword, :userFname, :userLname, :userAdress, :userRole)';
+//PasswordHash used in the Post method
+$Users = [
+    [
+        'userEmail' => 'clientN2@gmail.com',
+        'userPassword' => 'azerty12345',
+        'userFname' => 'Chap',        
+        'userLname' => 'Louais',
+        'userAdress' => '70 rue Lourmel',
+        'userRole' => '0'
+    ],
+    [
+        'userEmail' => 'adminN2@gmail.com',
+        'userPassword' => 'root',
+        'userFname' => 'Chap',        
+        'userLname' => 'Louais',
+        'userAdress' => '60 rue Lourmel',
+        'userRole' => '1'
+    ]
+    ];
+
+
+$statement7 = $connection->prepare($Query7);
+foreach($Users as $User) {
+    $statement7->execute($User);
+}
