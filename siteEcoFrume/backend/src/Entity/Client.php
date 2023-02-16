@@ -12,4 +12,5 @@ class Client extends AbstractUser  {
         $this->userRole = 0;
 
     }   
+
 }

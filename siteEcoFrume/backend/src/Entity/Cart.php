@@ -10,50 +10,65 @@ class Cart {
     protected int $productId;
     protected string $productName;
     protected string $productPrice;
-    private $connection;
 
-    public function __construct()
+
+    /**
+     * Get the value of productId
+     */ 
+    public function getProductId()
     {
-        try{
-            $connection = new PDO('mysql:host=localhost;dbname=EcoFrume', 'metarar22', 'root');
-            }
-            catch (PDOException $erreur){
-                die('Erreur: ' . $erreur->getMessage());
-            }
+        return $this->productId;
     }
-    
 
-    function listAllCart(){
-        $sql = "SELECT * FROM Cart";
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($result);
-      }   
-    
-      function getCartByCartId($id){
-        $sql = "SELECT * FROM Cart WHERE cartId = $id";
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($result);
-      }
-    
-      function getCartByClientId($CId){
-        $sql = "SELECT * FROM Cart WHERE cartId = $CId";
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($result);
-      }
-    
-      function deleteCart($cartId){
-        $sql = "DELETE FROM Cart WHERE cartId = $cartId";
-        $stmt = $this->connection->prepare($sql);
-        $stmt->bindParam(':cartId', $cartId, PDO::PARAM_INT);
-        if ($stmt->execute()){
-          echo 'Cart deleted';
-        }
-        
-      }
+    /**
+     * Set the value of productId
+     *
+     * @return  self
+     */ 
+    public function setProductId($productId)
+    {
+        $this->productId = $productId;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of productName
+     */ 
+    public function getProductName()
+    {
+        return $this->productName;
+    }
+
+    /**
+     * Set the value of productName
+     *
+     * @return  self
+     */ 
+    public function setProductName($productName)
+    {
+        $this->productName = $productName;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of productPrice
+     */ 
+    public function getProductPrice()
+    {
+        return $this->productPrice;
+    }
+
+    /**
+     * Set the value of productPrice
+     *
+     * @return  self
+     */ 
+    public function setProductPrice($productPrice)
+    {
+        $this->productPrice = $productPrice;
+
+        return $this;
+    }
 }

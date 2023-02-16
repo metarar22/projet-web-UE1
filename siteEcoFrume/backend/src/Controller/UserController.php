@@ -54,4 +54,34 @@ class UserController{
             }
         }
     }
+
+    function listAllUser(){
+        global $connection;
+        $sql = "SELECT * FROM User";
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($result);
+      }   
+    
+
+    
+      function addUser($userEmail, $userPassword, $userFname, $userLname, $userAdress){
+        global $connection;
+        $sql = "INSERT INTO User(userEmail, userPassword, userFname, userLname, userAdress) VALUES('$userEmail', '$userPassword', '$userFname', '$userLname', '$userAdress')";
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
+        echo "Insertion réussie";
+
+      
+      }
+      
+      
+      function deleteUser($userId){
+        global $connection;
+        $sql = "DELETE FROM User WHERE userId = $userId";
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
+        
+      }
 }

@@ -14,7 +14,6 @@ Abstract class AbstractUser {
     protected string $userAdress;
     protected int $userRole;
 
-    protected $connection;
 
     /**
      * Get the value of userId
@@ -168,45 +167,6 @@ Abstract class AbstractUser {
 
     }
 
-    function listAllUser(){
-        $sql = "SELECT * FROM User";
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($result);
-      }   
-    
-      function getUserById($id){
-        $sql = "SELECT * FROM User WHERE userId = $id";
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($result);
-      }
-    
-      function getUserByEmail($email){
-        $sql = "SELECT * FROM User WHERE userEmail = $email";
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($result);
-      }
-    
-      function addUser($userEmail, $userPassword, $userFname, $userLname, $userAdress){
-        $sql = "INSERT INTO User(userEmail, userPassword, userFname, userLname, userAdress) VALUES('$userEmail', '$userPassword', '$userFname', '$userLname', '$userAdress')";
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute();
-        echo "Insertion réussie";
 
-      
-      }
-      
-      
-      function deleteUser($userId){
-        $sql = "DELETE FROM User WHERE userId = $userId";
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute();
-        
-      }
     
 }

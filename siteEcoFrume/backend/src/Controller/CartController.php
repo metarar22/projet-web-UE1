@@ -51,7 +51,7 @@ public function Chekout(){
     $Query = "SELECT SUM(productPrice) FROM Cart";
     $statement = $this->connection->prepare($Query);
     $statement->execute();
-    var_dump($statement);
+    print_r($statement);
     return "Régler votre total" . PHP_EOL;
     $this->EmptyCart();
 }
@@ -62,6 +62,26 @@ public function listProduct(){
     $statement->execute();
 
 }
+
+function listAllCart(){
+    $sql = "SELECT * FROM Cart";
+    $stmt = $this->connection->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode($result);
+  }   
+
+
+
+  function deleteCart($cartId){
+    $sql = "DELETE FROM Cart WHERE cartId = $cartId";
+    $stmt = $this->connection->prepare($sql);
+    $stmt->bindParam(':cartId', $cartId, PDO::PARAM_INT);
+    if ($stmt->execute()){
+      echo 'Cart deleted';
+    }
+    
+  }
 
 }
 
