@@ -207,7 +207,7 @@ $Legumes = [
 ];
 
 
-/*
+
 //Insertion des Fruits 
 $statement5 = $connection->prepare($Query5);
 foreach($Fruits as $Fruit) {
@@ -219,7 +219,7 @@ $statement6 = $connection->prepare($Query5);
 foreach($Legumes as $Legume) {
     $statement6->execute($Legume);
 }
-*/
+
 
 
 $Query6 = 'INSERT INTO Cart(productName, productPrice, productCategory, productPicture) VALUES(:productName, :productPrice, :productCategory, :productPicture)';
@@ -272,7 +272,7 @@ $Users = [
     [
         'userEmail' => 'adminN2@gmail.com',
         'userPassword' => 'root',
-        'userFname' => 'Chap',        
+        'userFname' => 'Paul',        
         'userLname' => 'Louais',
         'userAdress' => '60 rue Lourmel',
         'userRole' => '1'

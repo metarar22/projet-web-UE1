@@ -1,6 +1,0 @@
-1 .Lancer un server PHP dans le dossier API
-    cd /backend
-    localhost:8000 -t api
-
-2.Lancer un server local pour le front
-    live server ? --> ?

@@ -3,7 +3,7 @@ import { mainprod } from "./module.js"
 
 customElements.define('product-code',mainprod)
 
-var url="http://localhost:8000/Product.php";
+var url="http://localhost:8000/backend/api/Product.php";
 
 
 var product=document.getElementById("product")
@@ -45,7 +45,7 @@ form.addEventListener('submit', function(e) {
 
     const payload = new FormData(form);
 
-    fetch('http://localhost:8000/User.php', {
+    fetch('http://localhost:8000/backend/api/User.php', {
         method: "POST",
         body: payload,
     })

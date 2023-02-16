@@ -1,7 +1,7 @@
 import { secprod } from "./module2.js";
 customElements.define('cart-code',secprod);
 
-var url2="http://localhost:8000/Cart.php";
+var url2="http://localhost:8000/backend/api/Cart.php";
 var cart=document.getElementById('Cart')
 
 function fData(data){
