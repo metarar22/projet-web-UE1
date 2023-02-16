@@ -53,7 +53,7 @@ public function Chekout(){
     $statement->execute();
     print_r($statement);
     return "Régler votre total" . PHP_EOL;
-    $this->EmptyCart();
+    EmptyCart();
 }
 
 public function listProduct(){

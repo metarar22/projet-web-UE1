@@ -154,18 +154,6 @@ Abstract class AbstractUser {
 
         return $this;
     }
-    public function __construct()
-    {
-
-        try{
-            $this->connection = new PDO('mysql:host=localhost;dbname=EcoFrume', 'metarar22', 'root');
-            }
-            catch (PDOException $erreur){
-                die('Erreur: ' . $erreur->getMessage());
-            }
-            
-
-    }
 
 
     
