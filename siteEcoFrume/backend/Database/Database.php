@@ -3,7 +3,7 @@
 namespace App\Database;
 use PDO;
 use PDOException;
-
+use App\Database\Connection;
 
 //Connection à la DB
 try{

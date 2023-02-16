@@ -3,20 +3,20 @@
 namespace App\Database;
 
 use PDO;
+use PDOException;
 
-Abstract Class Connection{
-    private static $instance = null;
-    private const PDO_OPTIONS = [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ];
+Class Connection{
+    private $connection;
 
-    public static function getConnection() : PDO
+
+    public function getConnection()
     {
-        if(self::$instance === null) {
-            self::$instance = new PDO('mysql:host=localhost;dbname=EcoFrume', 'metarar22', 'root', self::PDO_OPTIONS);
-        }
-        return self::$instance;
+        try{
+            $this->connection = new PDO('mysql:host=localhost;dbname=EcoFrume', 'metarar22', 'root');
+            }
+            catch (PDOException $erreur){
+                die('Erreur: ' . $erreur->getMessage());
+            }
     }
 }
 

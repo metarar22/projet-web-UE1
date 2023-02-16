@@ -183,8 +183,8 @@ Abstract class AbstractProduct {
         
       }
       
-      function deleteProduct(){
-        $sql = "DELETE FROM Product WHERE productId = :productId";
+      function deleteProduct($productId){
+        $sql = "DELETE FROM Product WHERE productId = $productId";
         $stmt = $this->connection->prepare($sql);
         if ($stmt->execute()){
           echo 'Product deleted';
